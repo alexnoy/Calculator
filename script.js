@@ -17,3 +17,15 @@ const division = function(a, b) {
 let firstNumber;
 let operator;
 let secondNumber;
+
+const operate = function(firstNumber, operator, secondNumber) {
+    if (operator === '+') {
+        return addition(firstNumber, secondNumber);
+    } else if (operator === '-') {
+        return subtraction(firstNumber, secondNumber);
+    } else if (operator === '*') {
+        return multiplication(firstNumber, secondNumber);
+    } else if (operator === '/') {
+        return division(firstNumber, secondNumber);
+    }
+}
