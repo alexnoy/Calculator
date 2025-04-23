@@ -19,6 +19,8 @@ let operator = {value: ''};
 let secondNumber = {value: ''};
 let solution = {value: ''};
 
+let objects = [firstNumber, operator, secondNumber];
+
 const display = document.querySelector('#display');
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
@@ -51,6 +53,8 @@ operators.forEach((sign) => sign.addEventListener('click', function() {
 equals.addEventListener('click', function() {
     solution.value = operate(+firstNumber.value, operator.value, +secondNumber.value);
     display.textContent = solution.value;
+
+    objects.forEach((object) => object.value = '');
 });
 
 const operate = function(firstNumber, operator, secondNumber) {
