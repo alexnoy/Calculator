@@ -21,7 +21,7 @@ let solution = {value: ''};
 
 const display = document.querySelector('#display');
 const numbers = document.querySelectorAll('.number');
-
+const operators = document.querySelectorAll('.operator');
 
 numbers.forEach((number) => number.addEventListener('click', function() {
     if ((operator.value !== '')) {
@@ -30,6 +30,15 @@ numbers.forEach((number) => number.addEventListener('click', function() {
     } else {
         display.textContent += number.textContent;
         firstNumber.value += number.textContent;
+    }
+}));
+
+operators.forEach((sign) => sign.addEventListener('click', function() {
+    if (firstNumber.value === '') {
+        operator.value = '';
+    } else {
+        display.textContent = '';
+        operator.value = sign.textContent;
     }
 }));
 
