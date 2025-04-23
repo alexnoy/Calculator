@@ -25,6 +25,11 @@ const operators = document.querySelectorAll('.operator');
 const equals = document.querySelector('#equals');
 
 numbers.forEach((number) => number.addEventListener('click', function() {
+    if (solution.value !== '') {
+        display.textContent = '';
+        solution.value = '';
+    }
+
     if ((operator.value !== '')) {
         display.textContent += number.textContent;
         secondNumber.value += number.textContent;
