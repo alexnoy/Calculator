@@ -25,6 +25,7 @@ const display = document.querySelector('#display');
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const equals = document.querySelector('#equals');
+const clear = document.querySelector('#clear');
 
 numbers.forEach((number) => number.addEventListener('click', function() {
     if (solution.value !== '') {
@@ -56,6 +57,11 @@ equals.addEventListener('click', function() {
 
     objects.forEach((object) => object.value = '');
 });
+
+clear.addEventListener('click', function() {
+    display.textContent = '';
+    objects.forEach((object) => object.value = '');
+})
 
 const operate = function(firstNumber, operator, secondNumber) {
     if (operator === '+') {
