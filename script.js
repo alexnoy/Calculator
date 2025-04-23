@@ -14,9 +14,10 @@ const division = function(a, b) {
     return a / b;
 }
 
-let firstNumber;
-let operator;
-let secondNumber;
+let firstNumber = {value: ''};
+let operator = {value: ''};
+let secondNumber = {value: ''};
+let solution = {value: ''};
 
 const operate = function(firstNumber, operator, secondNumber) {
     if (operator === '+') {
