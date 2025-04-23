@@ -22,6 +22,7 @@ let solution = {value: ''};
 const display = document.querySelector('#display');
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
+const equals = document.querySelector('#equals');
 
 numbers.forEach((number) => number.addEventListener('click', function() {
     if ((operator.value !== '')) {
@@ -41,6 +42,11 @@ operators.forEach((sign) => sign.addEventListener('click', function() {
         operator.value = sign.textContent;
     }
 }));
+
+equals.addEventListener('click', function() {
+    solution.value = operate(+firstNumber.value, operator.value, +secondNumber.value);
+    display.textContent = solution.value;
+});
 
 const operate = function(firstNumber, operator, secondNumber) {
     if (operator === '+') {
