@@ -19,6 +19,20 @@ let operator = {value: ''};
 let secondNumber = {value: ''};
 let solution = {value: ''};
 
+const display = document.querySelector('#display');
+const numbers = document.querySelectorAll('.number');
+
+
+numbers.forEach((number) => number.addEventListener('click', function() {
+    if ((operator.value !== '')) {
+        display.textContent += number.textContent;
+        secondNumber.value += number.textContent;
+    } else {
+        display.textContent += number.textContent;
+        firstNumber.value += number.textContent;
+    }
+}));
+
 const operate = function(firstNumber, operator, secondNumber) {
     if (operator === '+') {
         return addition(firstNumber, secondNumber);
