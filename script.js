@@ -67,7 +67,7 @@ clear.addEventListener('click', function() {
 
 const evaluate = function() {
     solution.value = operate(+firstNumber.value, operator.value, +secondNumber.value);
-    display.textContent = solution.value;
+    display.textContent = parseFloat(solution.value.toFixed(3));
     objects.forEach((object) => object.value = '');
     firstNumber.value = solution.value;
 }
