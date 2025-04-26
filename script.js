@@ -28,8 +28,12 @@ const equals = document.querySelector('#equals');
 const clear = document.querySelector('#clear');
 
 numbers.forEach((number) => number.addEventListener('click', function() {
-    if (solution.value === +display.textContent) {
+    if (+parseFloat(solution.value).toFixed(3) === +display.textContent) {
         display.textContent = '';
+    }
+
+    if (firstNumber.value === solution.value && operator.value === '') {
+        firstNumber.value = '';
     }
 
     if ((operator.value !== '')) {
@@ -44,7 +48,7 @@ numbers.forEach((number) => number.addEventListener('click', function() {
 operators.forEach((sign) => sign.addEventListener('click', function() {
     if (firstNumber.value === '') {
         operator.value = '';
-    } else if (firstNumber !== '' && operator.value === '') {
+    } else if (firstNumber.value !== '' && operator.value === '') {
         display.textContent = '';
         operator.value = sign.textContent;
     }
@@ -52,12 +56,15 @@ operators.forEach((sign) => sign.addEventListener('click', function() {
     if (firstNumber.value !== '' && operator.value !== '' && secondNumber.value !== '') {
         evaluate();
         operator.value = sign.textContent;
-        console.log(firstNumber.value, operator.value);
     }
 }));
 
 equals.addEventListener('click', function() {
-    evaluate();
+    if (evaluate() === '') {
+        solution.value = '';
+    } else {
+        evaluate();
+    }
 });
 
 clear.addEventListener('click', function() {
@@ -67,7 +74,12 @@ clear.addEventListener('click', function() {
 
 const evaluate = function() {
     solution.value = operate(+firstNumber.value, operator.value, +secondNumber.value);
-    display.textContent = parseFloat(solution.value.toFixed(3));
+    if (solution.value === undefined) {
+        solution.value = +firstNumber.value;
+        display.textContent = +parseFloat(solution.value).toFixed(3);
+        return operator.value;
+    }
+    display.textContent = +parseFloat(solution.value).toFixed(3);
     objects.forEach((object) => object.value = '');
     firstNumber.value = solution.value;
 }
