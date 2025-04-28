@@ -53,6 +53,10 @@ operators.forEach((sign) => sign.addEventListener('click', function() {
         operator.value = sign.textContent;
     }
 
+    if (operator.value !== '' && secondNumber.value === '') {
+        operator.value = sign.textContent;
+    }
+
     if (firstNumber.value !== '' && operator.value !== '' && secondNumber.value !== '') {
         evaluate();
         operator.value = sign.textContent;
@@ -70,15 +74,21 @@ equals.addEventListener('click', function() {
 clear.addEventListener('click', function() {
     display.textContent = '';
     objects.forEach((object) => object.value = '');
-})
+});
 
 const evaluate = function() {
     solution.value = operate(+firstNumber.value, operator.value, +secondNumber.value);
+
     if (solution.value === undefined) {
         solution.value = +firstNumber.value;
         display.textContent = +parseFloat(solution.value).toFixed(3);
         return operator.value;
     }
+
+    if (solution.value === Infinity || solution.value === -Infinity) {
+        return display.textContent = 'LOL really?';
+    }
+
     display.textContent = +parseFloat(solution.value).toFixed(3);
     objects.forEach((object) => object.value = '');
     firstNumber.value = solution.value;
