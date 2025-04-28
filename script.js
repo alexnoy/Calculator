@@ -85,7 +85,8 @@ const evaluate = function() {
         return operator.value;
     }
 
-    if (solution.value === Infinity || solution.value === -Infinity) {
+    if (operator.value === '/' && secondNumber.value === '0') {
+        firstNumber.value = 'NaN';
         return display.textContent = 'LOL really?';
     }
 
