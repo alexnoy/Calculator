@@ -11,4 +11,45 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: darkslategray;
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+    width: 350px;
+    border: 2px solid black;
+    padding: 16px;
+    gap: 8px;
+}
+
+#display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: aquamarine;
+    height: 100px;
+    width: 300px;
+    font-size: 48px;
+    border: solid black 2px;
+}
+
+#keypad {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 8px;
+    flex: 1;
+}
+
+button {
+    aspect-ratio: 1;
+    height: 70px;
+    font-size: 28px;
+    border: solid black 2px;
+    border-radius: 50px;
+    background-color: aquamarine;
 }
