@@ -26,10 +26,12 @@ const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const equals = document.querySelector('#equals');
 const clear = document.querySelector('#clear');
+const decimal = document.querySelector('#decimal');
 
 numbers.forEach((number) => number.addEventListener('click', function() {
     if (+parseFloat(solution.value).toFixed(3) === +display.textContent) {
         display.textContent = '';
+        dControl();
     }
 
     if (firstNumber.value === solution.value && operator.value === '') {
@@ -51,6 +53,7 @@ operators.forEach((sign) => sign.addEventListener('click', function() {
     } else if (firstNumber.value !== '' && operator.value === '') {
         display.textContent = '';
         operator.value = sign.textContent;
+        dControl();
     }
 
     if (operator.value !== '' && secondNumber.value === '') {
@@ -74,7 +77,20 @@ equals.addEventListener('click', function() {
 clear.addEventListener('click', function() {
     display.textContent = '';
     objects.forEach((object) => object.value = '');
+    dControl();
 });
+
+decimal.addEventListener('click', function() {
+    dControl();
+});
+
+const dControl = function() {
+    if (display.textContent.includes('.')) {
+        decimal.disabled = true;
+    } else {
+        decimal.disabled = false;
+    }
+}
 
 const evaluate = function() {
     solution.value = operate(+firstNumber.value, operator.value, +secondNumber.value);
